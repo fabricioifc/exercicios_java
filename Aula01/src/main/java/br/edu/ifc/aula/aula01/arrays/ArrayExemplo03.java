@@ -1,6 +1,6 @@
 package br.edu.ifc.aula.aula01.arrays;
 
-public class ArrayExmplo03 {
+public class ArrayExemplo03 {
 
   public static void main(String[] args) {
     int linhas = 2, colunas = 3;
