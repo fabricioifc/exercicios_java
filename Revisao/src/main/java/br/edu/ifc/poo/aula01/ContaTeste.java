@@ -10,12 +10,18 @@ public class ContaTeste {
     Conta c2 = new Conta();
     c2.setCliente("Ronaldo");
     c2.setSaldo(100);
+    
+    c1.exibeSaldo();
+    c2.exibeSaldo();
 
     c1.deposita(100);
     c1.saca(50);
-    c2.transferePara(c1, 25);
+    c2.transferePara(c1, 35);
 
     // não deve permitir
     c1.saca(100);
+    
+    c1.exibeSaldo();
+    c2.exibeSaldo();
   }
 }
