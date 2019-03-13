@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifc.poo.aula04_bkp.interfaces;
+package br.edu.ifc.poo.aula04.exemplo.interfaces;
 
 /**
  *
  * @author fabricio
  */
-public interface DAOEstoque {
-  void baixar();
+public interface Arquivo {
+
+    Object importar(String caminhoDoArquivo);
+    void exportar(String caminhoDoArquivo);
 }
