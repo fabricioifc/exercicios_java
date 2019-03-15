@@ -7,12 +7,12 @@ package br.edu.ifc.poo.aula04.exemplo.interfaces;
  */
 public interface DAOGeral {
 
-    static final String TESTE = "DAOGeral"; // apenas um exemplo de constante em uma interface.
+  static final String TESTE = "DAOGeral"; // apenas um exemplo de constante em uma interface.
 
-    void inserir();
+  void inserir();
 
-    void excluir();
+  void excluir();
 
-    void listar();
+  void listar();
 
 }
