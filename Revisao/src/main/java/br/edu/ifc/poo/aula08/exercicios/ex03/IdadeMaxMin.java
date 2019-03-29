@@ -22,13 +22,13 @@ public class IdadeMaxMin {
     this.idade4 = idade4;
   }
 
-  public Integer verificarMaiorIdade() {
-    // Implementar
+//  public Integer verificarMaiorIdade() {
+//    // Implementar
+//
+//  }
 
-  }
-
-  public Integer verificarMenorIdade() {
-    //Implementar
-  }
+//  public Integer verificarMenorIdade() {
+//    //Implementar
+//  }
 
 }
