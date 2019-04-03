@@ -2,10 +2,10 @@ package br.edu.ifc.poo.aula10.prova;
 
 abstract public class Livro {
 
-    abstract private String titulo;
-    abstract private String autor;
+    private String titulo;
+    private String autor;
 
-    Livro(String t, double a) {
+    Livro(String t, String a) {
         titulo = t;
         autor = a;
     }
@@ -17,7 +17,12 @@ abstract public class Livro {
 class UsarLivro extends Livro {
 
     public UsarLivro() {
+        super("","");
+    }
 
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
     }
 
 }

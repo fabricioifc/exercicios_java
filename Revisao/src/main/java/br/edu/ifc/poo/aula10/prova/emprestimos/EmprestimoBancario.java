@@ -13,7 +13,7 @@ public class EmprestimoBancario {
         );
         //Salário, nome e CPF
         Funcionario f1 = new Funcionario(
-                null, "Fernando", 96547841254L
+                2500.0, "Fernando", 96547841254L
         );
         // Departamento, salário, nome e CPF
         ChefeDeDepartamento c1 = new ChefeDeDepartamento(

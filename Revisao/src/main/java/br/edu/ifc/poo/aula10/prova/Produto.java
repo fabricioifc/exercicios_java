@@ -1,13 +1,13 @@
 package br.edu.ifc.poo.aula10.prova;
 
-public class Produto {
+abstract public class Produto {
 
-    private String identificação;
-    private double custoDeFabricação;
+    private String identificacao;
+    private double custoDeFabricacao;
 
     Produto(String i, double c) {
-        identificação = i;
-        custoDeFabricação = c;
+        identificacao = i;
+        custoDeFabricacao = c;
     }
 
     @Override

@@ -1,18 +1,18 @@
 package br.edu.ifc.poo.aula10.prova;
 
-public class EntradaNaAgenda implements DataHora {
+public class EntradaNaAgenda extends DataHora {
 
     private final String evento;
 
     public EntradaNaAgenda(int d, int m, int a, int hor, int min, int seg, String ev) {
-        super.super(d, m, a);
+//        super(d, m, a);
         super(d, m, a, hor, min, seg);
         evento = ev;
     }
 
     @Override
     public String toString() {
-        return super.super.toString() + ":" + super.toString() + " -> " + ev;
+        return super.toString() + ":" + super.toString() + " -> " + evento;
     }
 
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ class Data {
     Data(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
-        ano = ano;
+        this.ano = ano;
     }
 
     @Override
@@ -61,6 +61,7 @@ class DataHora extends Data {
     private final Hora hora;
 
     public DataHora(int d, int m, int a, int hor, int min, int seg) {
+        super(d, m, a);
         hora = new Hora(hor, min, seg);
     }
 
