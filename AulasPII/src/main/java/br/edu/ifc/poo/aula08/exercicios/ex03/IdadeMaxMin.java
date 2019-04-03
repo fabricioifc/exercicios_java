@@ -24,11 +24,12 @@ public class IdadeMaxMin {
 
   public Integer verificarMaiorIdade() {
     // Implementar
-
+    return 0;
   }
 
   public Integer verificarMenorIdade() {
     //Implementar
+    return 0;
   }
 
 }
