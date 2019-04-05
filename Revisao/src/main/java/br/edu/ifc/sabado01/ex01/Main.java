@@ -1,4 +1,4 @@
-package br.edu.ifc.poo.sabado01.ex01;
+package br.edu.ifc.sabado01.ex01;
 
 import javax.swing.JOptionPane;
 
