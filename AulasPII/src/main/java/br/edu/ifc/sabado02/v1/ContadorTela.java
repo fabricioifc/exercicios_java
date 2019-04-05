@@ -1,6 +1,5 @@
 package br.edu.ifc.sabado02.v1;
 
-import br.edu.ifc.sabado02.v2.ContadorController;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
