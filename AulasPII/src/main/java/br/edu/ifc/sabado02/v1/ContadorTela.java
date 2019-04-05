@@ -26,11 +26,13 @@ public class ContadorTela extends JFrame implements ActionListener {
     }
 
     private void initComponentes() {
+        // Cria os componentes
         lblContador = new JLabel("Contador");
         txtContador = new JTextField(contador + "", 10);
         txtContador.setEditable(false);
         btnContador = new JButton("Incrementar");
 
+        // Adiciona os componentes na tela
         super.getContentPane().add(lblContador);
         super.getContentPane().add(txtContador);
         super.getContentPane().add(btnContador);
@@ -38,19 +40,10 @@ public class ContadorTela extends JFrame implements ActionListener {
         btnContador.addActionListener(this);
     }
 
-    public void increment() throws Exception {
-        ++contador;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            System.out.println(e.getActionCommand());
-            this.increment();
-            txtContador.setText(contador + "");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        ++contador;
+        txtContador.setText(contador + "");
     }
 
     public static void main(String[] args) {
