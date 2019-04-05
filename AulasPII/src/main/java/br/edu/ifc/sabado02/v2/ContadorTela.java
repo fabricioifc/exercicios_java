@@ -1,8 +1,6 @@
 package br.edu.ifc.sabado02.v2;
 
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,7 +23,7 @@ public class ContadorTela extends JFrame {
     public ContadorTela() {
         super("Contador");
         super.setLayout(new FlowLayout());
-        super.setSize(450, 75);
+        super.setSize(450, 70);
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         modelo = new ContadorModel();

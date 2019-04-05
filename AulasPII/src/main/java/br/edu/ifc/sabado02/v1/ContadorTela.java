@@ -19,7 +19,7 @@ public class ContadorTela extends JFrame implements ActionListener {
     public ContadorTela() {
         super("Contador");
         super.setLayout(new FlowLayout());
-        super.setSize(250, 100);
+        super.setSize(450, 70);
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         initComponentes();
