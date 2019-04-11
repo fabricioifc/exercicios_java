@@ -1,4 +1,4 @@
-package br.edu.ifc.gui.aula01.ex01;
+package br.edu.ifc.gui.aula11.ex01;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
