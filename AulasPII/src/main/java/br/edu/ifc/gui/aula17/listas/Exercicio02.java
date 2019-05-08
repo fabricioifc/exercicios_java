@@ -10,83 +10,83 @@ import java.util.Locale;
 
 public class Exercicio02 extends javax.swing.JFrame {
 
-    private List<Aluno> alunos;
-    private int posicaoAtual = 0;
+  private List<Aluno> alunos;
+  private int posicaoAtual = 0;
 
-    public Exercicio02() {
-        initComponents();
+  public Exercicio02() {
+    initComponents();
 
-        Faker fake = new Faker(new Locale("pt-BR"));
-        alunos = new ArrayList<>();
+    Faker fake = new Faker(new Locale("pt-BR"));
+    alunos = new ArrayList<>();
 
-        for (int i = 0; i < 40; i++) {
-            Long matricula = fake.number().numberBetween(0L, 100000L);
-            String nome = fake.name().fullName();
-            Date dtnascimento = fake.date().birthday();
-            Double bolsa = fake.number().randomDouble(2, 100, 500);
-            boolean matriculado = fake.random().nextBoolean();
+    for (int i = 0; i < 40; i++) {
+      Long matricula = fake.number().numberBetween(0L, 100000L);
+      String nome = fake.name().fullName();
+      Date dtnascimento = fake.date().birthday();
+      Double bolsa = fake.number().randomDouble(2, 100, 500);
+      boolean matriculado = fake.random().nextBoolean();
 
-            Aluno aluno = new Aluno(matricula, nome, dtnascimento, bolsa, matriculado);
-            alunos.add(aluno);
+      Aluno aluno = new Aluno(matricula, nome, dtnascimento, bolsa, matriculado);
+      alunos.add(aluno);
+    }
+
+    atualizarValores();
+    atualizarBotoes();
+
+    ActionListener listener = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+          case "Inicio":
+            posicaoAtual = 0;
+            break;
+          case "Anterior":
+            posicaoAtual--;
+            break;
+          case "Próximo":
+            posicaoAtual++;
+            break;
+          case "Último":
+            posicaoAtual = alunos.size() - 1;
+            break;
         }
-
         atualizarValores();
         atualizarBotoes();
 
-        ActionListener listener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (e.getActionCommand()) {
-                    case "Inicio":
-                        posicaoAtual = 0;
-                        break;
-                    case "Anterior":
-                        posicaoAtual--;
-                        break;
-                    case "Próximo":
-                        posicaoAtual++;
-                        break;
-                    case "Último":
-                        posicaoAtual = alunos.size() - 1;
-                        break;
-                }
-                atualizarValores();
-                atualizarBotoes();
+      }
 
-            }
+    };
+    btnInicio.addActionListener(listener);
+    btnProximo.addActionListener(listener);
+    btnAnterior.addActionListener(listener);
+    btnFim.addActionListener(listener);
+  }
 
-        };
-        btnInicio.addActionListener(listener);
-        btnProximo.addActionListener(listener);
-        btnAnterior.addActionListener(listener);
-        btnFim.addActionListener(listener);
-    }
+  private void atualizarBotoes() {
+    boolean inicio = posicaoAtual == 0;
 
-    private void atualizarBotoes() {
-        boolean inicio = posicaoAtual == 0;
+    boolean fim = posicaoAtual == alunos.size() - 1;
+    btnInicio.setEnabled(!inicio);
+    btnAnterior.setEnabled(!inicio);
+    btnProximo.setEnabled(!fim);
+    btnFim.setEnabled(!fim);
+  }
 
-        boolean fim = posicaoAtual == alunos.size() - 1;
-        btnInicio.setEnabled(!inicio);
-        btnAnterior.setEnabled(!inicio);
-        btnProximo.setEnabled(!fim);
-        btnFim.setEnabled(!fim);
-    }
+  private void atualizarValores() {
+    lblPosicao.setText("Posição: " + posicaoAtual);
+    lblTamanho.setText("Tamanho: " + alunos.size());
 
-    private void atualizarValores() {
-        lblPosicao.setText("Posição: " + posicaoAtual);
-        lblTamanho.setText("Tamanho: " + alunos.size());
+    Aluno aluno = alunos.get(posicaoAtual);
 
-        Aluno aluno = alunos.get(posicaoAtual);
+    lblMatricula.setText(aluno.getMatricula().toString());
+    lblNome.setText(aluno.getNome());
+    lblBolsa.setText(aluno.getValorBolsa().toString());
+    ckMatriculado.setSelected(aluno.isMatriculado());
 
-        lblMatricula.setText(aluno.getMatricula().toString());
-        lblNome.setText(aluno.getNome());
-        lblBolsa.setText(aluno.getValorBolsa().toString());
-        ckMatriculado.setSelected(aluno.isMatriculado());
+    lblIdade.setText(aluno.getIdade().toString());
+  }
 
-        lblIdade.setText(aluno.getIdade().toString());
-    }
-
-    @SuppressWarnings("unchecked")
+  @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -262,37 +262,37 @@ public class Exercicio02 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+  public static void main(String args[]) {
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+     */
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Exercicio02().setVisible(true);
-            }
-        });
+      }
+    } catch (ClassNotFoundException ex) {
+      java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+      java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+      java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(Exercicio02.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        new Exercicio02().setVisible(true);
+      }
+    });
+  }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
