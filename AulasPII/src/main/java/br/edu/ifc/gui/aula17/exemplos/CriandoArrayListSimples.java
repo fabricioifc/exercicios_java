@@ -1,4 +1,4 @@
-package br.edu.ifc.gui.aula17.listas;
+package br.edu.ifc.gui.aula17.exemplos;
 
 import java.util.ArrayList;
 import java.util.Collections;

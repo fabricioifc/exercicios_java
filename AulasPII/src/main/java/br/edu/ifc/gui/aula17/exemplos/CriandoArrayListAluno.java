@@ -1,4 +1,4 @@
-package br.edu.ifc.gui.aula17.listas;
+package br.edu.ifc.gui.aula17.exemplos;
 
 import com.github.javafaker.Faker;
 import java.util.ArrayList;
