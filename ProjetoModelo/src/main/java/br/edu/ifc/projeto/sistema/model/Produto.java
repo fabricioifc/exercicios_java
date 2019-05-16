@@ -1,4 +1,4 @@
-package br.edu.ifc.gui.aula18.sistema.model;
+package br.edu.ifc.projeto.sistema.model;
 
 public class Produto {
 

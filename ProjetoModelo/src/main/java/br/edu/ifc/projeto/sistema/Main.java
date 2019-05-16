@@ -1,4 +1,4 @@
-package br.edu.ifc.gui.aula18.sistema;
+package br.edu.ifc.projeto.sistema;
 
 public class Main {
 

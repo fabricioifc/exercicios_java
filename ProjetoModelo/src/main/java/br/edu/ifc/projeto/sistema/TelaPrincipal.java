@@ -1,6 +1,6 @@
-package br.edu.ifc.gui.aula18.sistema;
+package br.edu.ifc.projeto.sistema;
 
-import br.edu.ifc.gui.aula18.sistema.view.ProdutoGUI;
+import br.edu.ifc.projeto.sistema.view.ProdutoGUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;

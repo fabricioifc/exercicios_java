@@ -1,9 +1,10 @@
-package br.edu.ifc.gui.aula18.sistema.controller;
+package br.edu.ifc.projeto.sistema.controller;
 
-import br.edu.ifc.gui.aula18.sistema.model.Produto;
+import br.edu.ifc.projeto.sistema.model.Produto;
 
 public interface ProdutoListener {
     
     void carregar();
     boolean salvar(Produto produto);
+    boolean excluir(Produto produto);
 }

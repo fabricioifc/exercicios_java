@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifc.gui.aula18.sistema.view;
+package br.edu.ifc.projeto.sistema.util;
 
-import br.edu.ifc.gui.aula18.sistema.model.Produto;
+import br.edu.ifc.projeto.sistema.model.Produto;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -96,8 +97,10 @@ public class ProdutoTabela extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void escondeColunaObjeto(JTable tabela, TableColumn coluna) {
-        tabela.removeColumn(coluna);
+    public void escondeColunaObjeto(JTable tabela) {
+        int ultimaColuna = tabela.getColumnCount() - 1;
+        TableColumn coluna = tabela.getColumnModel().getColumn(ultimaColuna);
+        tabela.getColumnModel().removeColumn(coluna);
     }
 
     public void removerLinha(int linha) {
@@ -108,5 +111,10 @@ public class ProdutoTabela extends AbstractTableModel {
     public void removerLinhas() {
         lista.clear();
         fireTableDataChanged();
+    }
+
+    public void setTamanhoColuna(JTable tabela, int coluna, int tamanho) {
+        TableColumnModel columnModel = tabela.getColumnModel();
+        columnModel.getColumn(coluna).setMaxWidth(tamanho);
     }
 }
