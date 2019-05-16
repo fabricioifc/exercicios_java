@@ -1,15 +1,13 @@
 package br.edu.ifc.gui.aula18.sistema.view;
 
-import br.edu.ifc.gui.aula18.sistema.util.ProdutoTabela;
 import br.edu.ifc.gui.aula18.sistema.PrincipalUtil;
 import br.edu.ifc.gui.aula18.sistema.controller.ProdutoController;
 import br.edu.ifc.gui.aula18.sistema.model.Produto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 
 public class ProdutoGUI extends javax.swing.JInternalFrame {
 
@@ -34,6 +32,7 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    produto = new Produto();
                     produto.setNome(txtNome.getText());
                     produto.setValor(Double.parseDouble(txtValor.getText()));
 
@@ -127,11 +126,6 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelaMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tabela);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,19 +158,6 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
-        if (tabela.getSelectedRow() >= 0) {
-            if (evt.getClickCount() == 2) {
-                int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
-                int coluna = 3;
-
-                produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
-                txtNome.setText(produto.getNome());
-                txtValor.setText(produto.getValor().toString());
-            }
-        }
-    }//GEN-LAST:event_tabelaMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
@@ -191,32 +172,11 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void montarTabela(List<?> dados) {
-        ProdutoTabela model = new ProdutoTabela(dados);
+        AbstractTableModel model = new ProdutoTabela(dados);
         tabela.setModel(model);
 
-        //Ajustar o tamanho das colunas
-        model.setTamanhoColuna(tabela, 0, 50);
-        model.setTamanhoColuna(tabela, 2, 100);
         // Esconder a última coluna
-        model.escondeColunaObjeto(tabela);
-
-        tabela.addKeyListener(new KeyAdapter() {
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (tabela.getSelectedRow() >= 0) {
-
-                    if (e.getKeyCode() == KeyEvent.VK_DELETE) {
-                        int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
-                        int coluna = 3;
-
-                        produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
-                        
-                        System.out.println(produto);
-                        controller.excluir(produto);
-                    }
-                }
-            }
-        });
+        int ultimaColuna = tabela.getColumnCount() - 1;
+        tabela.removeColumn(tabela.getColumnModel().getColumn(ultimaColuna));
     }
 }

@@ -6,5 +6,4 @@ public interface ProdutoListener {
     
     void carregar();
     boolean salvar(Produto produto);
-    boolean excluir(Produto produto);
 }

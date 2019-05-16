@@ -9,7 +9,6 @@ import br.edu.ifc.gui.aula18.sistema.model.Produto;
 import br.edu.ifc.gui.aula18.sistema.view.ProdutoGUI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import javax.swing.JInternalFrame;
 
 /**
@@ -29,23 +28,9 @@ public class ProdutoController implements ProdutoListener {
 
     @Override
     public boolean salvar(Produto produto) {
-        boolean salvou = false;
-        // Se for produto novo
-        if (produto.getId() == null) {
-            produto.setId(Long.parseLong(String.valueOf(lista.size() + 1)));
-            salvou = lista.add(produto);
-        } else {
-            // senão, se for uma alteração
-            //Remove da lista
-            lista.removeIf(new Predicate<Produto>() {
-                @Override
-                public boolean test(Produto t) {
-                    return t.getId().equals(produto.getId());
-                }
-            });
-            // Adiciona na lista
-            salvou = lista.add(produto);
-        }
+        produto.setId(Long.parseLong(String.valueOf(lista.size() + 1)));
+        boolean salvou = lista.add(produto);
+
         if (salvou) {
             tela.limparTela();
             tela.mostrarMensagem("Produto Salvo com Sucesso!");
@@ -61,18 +46,6 @@ public class ProdutoController implements ProdutoListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public boolean excluir(Produto produto) {
-        boolean excluir = lista.remove(produto);
-
-        if (excluir) {
-            tela.mostrarMensagem("Produto Excluido com Sucesso!");
-            carregar();
-        }
-
-        return excluir;
     }
 
 }
