@@ -13,53 +13,57 @@ import javax.swing.JOptionPane;
 
 public class ProdutoGUI extends javax.swing.JInternalFrame {
 
-    private Produto produto;
-    private ProdutoController controller;
+  private Produto produto;
+  private ProdutoController controller;
 
-    public ProdutoGUI() {
-        initComponents();
-        super.setClosable(true);
-        super.setMaximizable(true);
+  public ProdutoGUI() {
+    initComponents();
+    super.setName("Produtos");
+    super.setClosable(true);
+    super.setMaximizable(true);
 
-        controller = new ProdutoController(this);
-        controller.carregar();
-        postContruct();
-    }
+    controller = new ProdutoController(this);
+    controller.carregar();
+    postContruct();
+  }
 
-    public final void postContruct() {
-        limparTela();
+  public final void postContruct() {
+    limparTela();
 
-        // Ação do botão Salvar
-        btnSalvar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    produto.setNome(txtNome.getText());
-                    produto.setValor(Double.parseDouble(txtValor.getText()));
+    // Ação do botão Salvar
+    btnSalvar.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        try {
+          produto.setNome(txtNome.getText());
+          produto.setValor(Double.parseDouble(txtValor.getText()));
 
-                    controller.salvar(produto);
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(ProdutoGUI.this, "Não é um número válido!", "Erro ao Salvar", JOptionPane.ERROR_MESSAGE);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(ProdutoGUI.this, "Ocorreu um erro ao salvar o produto!", "Erro ao Salvar", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-    }
+          controller.salvar(produto);
+        } catch (NumberFormatException ex) {
+          PrincipalUtil.getInstance().getPrincipal()
+              .getMensagens().setText("Não é um número válido");
+          JOptionPane.showMessageDialog(ProdutoGUI.this, "Não é um número válido!", "Erro ao Salvar", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+          JOptionPane.showMessageDialog(ProdutoGUI.this, "Ocorreu um erro ao salvar o produto!", "Erro ao Salvar", JOptionPane.ERROR_MESSAGE);
+        }
+      }
+    });
+  }
 
-    public void mostrarMensagem(String mensagem) {
-        PrincipalUtil.getInstance().getPrincipal().getMensagens().setText(mensagem);
-    }
+  public void mostrarMensagem(String mensagem) {
+    PrincipalUtil.getInstance().
+        getPrincipal().getMensagens().setText(mensagem);
+  }
 
-    public void limparTela() {
-        produto = new Produto();
-        txtNome.setText("");
-        txtValor.setText("");
-        txtNome.grabFocus();
-        mostrarMensagem(null);
-    }
+  public void limparTela() {
+    produto = new Produto();
+    txtNome.setText("");
+    txtValor.setText("");
+    txtNome.grabFocus();
+    mostrarMensagem(null);
+  }
 
-    @SuppressWarnings("unchecked")
+  @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -161,20 +165,20 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
-        if (tabela.getSelectedRow() >= 0) {
-            if (evt.getClickCount() == 2) {
-                int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
-                int coluna = 3;
-
-                produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
-                txtNome.setText(produto.getNome());
-                txtValor.setText(produto.getValor().toString());
-            }
+      if (tabela.getSelectedRow() >= 0) {
+        if (evt.getClickCount() == 2) {
+          int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
+          int coluna = 3;
+          
+          produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
+          txtNome.setText(produto.getNome());
+          txtValor.setText(produto.getValor().toString());
         }
+      }
     }//GEN-LAST:event_tabelaMouseClicked
 
 
@@ -190,33 +194,33 @@ public class ProdutoGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    public void montarTabela(List<?> dados) {
-        ProdutoTabela model = new ProdutoTabela(dados);
-        tabela.setModel(model);
+  public void montarTabela(List<?> dados) {
+    ProdutoTabela model = new ProdutoTabela(dados);
+    tabela.setModel(model);
 
-        //Ajustar o tamanho das colunas
-        model.setTamanhoColuna(tabela, 0, 50);
-        model.setTamanhoColuna(tabela, 2, 100);
-        // Esconder a última coluna
-        model.escondeColunaObjeto(tabela);
+    //Ajustar o tamanho das colunas
+    model.setTamanhoColuna(tabela, 0, 50);
+    model.setTamanhoColuna(tabela, 2, 100);
+    // Esconder a última coluna
+//    model.escondeColunaObjeto(tabela);
 
-        tabela.addKeyListener(new KeyAdapter() {
+    tabela.addKeyListener(new KeyAdapter() {
 
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (tabela.getSelectedRow() >= 0) {
+      @Override
+      public void keyReleased(KeyEvent e) {
+        if (tabela.getSelectedRow() >= 0) {
 
-                    if (e.getKeyCode() == KeyEvent.VK_DELETE) {
-                        int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
-                        int coluna = 3;
+          if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+            int linha = tabela.convertRowIndexToModel(tabela.getSelectedRow());
+            int coluna = 3;
 
-                        produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
-                        
-                        System.out.println(produto);
-                        controller.excluir(produto);
-                    }
-                }
-            }
-        });
-    }
+            produto = (Produto) tabela.getModel().getValueAt(linha, coluna);
+
+            System.out.println(produto);
+            controller.excluir(produto);
+          }
+        }
+      }
+    });
+  }
 }
