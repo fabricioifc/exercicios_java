@@ -4,7 +4,7 @@ import br.edu.ifc.gui.aula18.sistema.model.Produto;
 
 public interface ProdutoListener {
     
-    void carregar();
-    boolean salvar(Produto produto);
-    boolean excluir(Produto produto);
+    void carregar() throws Exception;
+    boolean salvar(Produto produto) throws Exception;
+    boolean excluir(Produto produto) throws Exception;
 }

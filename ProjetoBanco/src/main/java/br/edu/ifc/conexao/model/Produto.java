@@ -1,4 +1,4 @@
-package br.edu.ifc.projeto.sistema.model;
+package br.edu.ifc.conexao.model;
 
 public class Produto {
 

@@ -1,6 +1,6 @@
 package br.edu.ifc.projeto.sistema.util;
 
-import br.edu.ifc.projeto.sistema.model.Produto;
+import br.edu.ifc.conexao.model.Produto;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;

@@ -27,3 +27,6 @@ hs_err_pid*
 /BizottoComponentes/target/
 /ProjetoModelo/target/
 /ProjetoConexao/target/
+/ProjetoConexao/nbproject/
+/ProjetoBanco/nbproject/
+/ProjetoBanco/target/
