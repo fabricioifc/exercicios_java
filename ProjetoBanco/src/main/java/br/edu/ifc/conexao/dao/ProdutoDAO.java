@@ -17,53 +17,22 @@ import java.util.List;
  *
  * @author fabricio
  */
-public class ProdutoDAO implements GenericDAO<Produto, Long> {
+public class ProdutoDAO implements GenericDAO<XXXXX, XXXXX> {
 
-    private final String SQL_INSERT = "INSERT INTO produtos (nome, valor) values (?,?)";
-    private final String SQL_UPDATE = "UPDATE produtos set nome = ?, valor = ? where id = ?";
-    private final String SQL_DELETE = "DELETE FROM produtos where id = ?";
-    private final String SQL_SELECT = "SELECT * FROM produtos";
-    private final String SQL_SELECT_BY_ID = "SELECT * FROM produtos where id = ?";
+    private final String SQL_INSERT = "";
+    private final String SQL_UPDATE = "";
+    private final String SQL_DELETE = "";
+    private final String SQL_SELECT = "";
+    private final String SQL_SELECT_BY_ID = "";
 
     @Override
     public boolean salvar(Produto objeto) throws SQLException {
-        int i = 1;
-        boolean resultado;
-        try {
-            PreparedStatement ps = DatabaseConnection.getInstance().getConnection().prepareStatement(SQL_INSERT);
-            ps.setString(i++, objeto.getNome());
-            ps.setDouble(i++, objeto.getValor());
-
-            resultado = ps.executeUpdate() == 1;
-            DatabaseConnection.commit();
-            return resultado;
-        } catch (SQLException ex) {
-            DatabaseConnection.rollback();
-            throw ex;
-        } finally {
-            DatabaseConnection.fecharConexao();
-        }
+        throw new UnsupportedOperationException("Implemente este método.");
     }
 
     @Override
     public List<Produto> listarTodos() throws SQLException {
-        List<Produto> lista = new ArrayList<>();
-        ResultSet rs;
-        try {
-            PreparedStatement ps = DatabaseConnection.getInstance().getConnection().prepareStatement(SQL_SELECT);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                lista.add(new Produto(rs.getLong("id"), rs.getString("nome"), rs.getDouble("valor")));
-            }
-
-            DatabaseConnection.commit();
-            return lista;
-        } catch (SQLException ex) {
-            DatabaseConnection.rollback();
-            throw ex;
-        } finally {
-            DatabaseConnection.fecharConexao();
-        }
+        throw new UnsupportedOperationException("Implemente este método.");
     }
 
     @Override
